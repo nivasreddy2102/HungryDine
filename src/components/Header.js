@@ -66,28 +66,6 @@ const Header = () => {
                   About
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
-                      isActive
-                        ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-md"
-                        : "text-gray-700 hover:bg-orange-50 hover:text-orange-600"
-                    }`
-                  }
-                >
-                  Contact
-                </NavLink>
-              </li>
-              <li>
-                <Link 
-                  to="/grocery" 
-                  className="px-4 py-2 rounded-lg font-semibold text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-all duration-300"
-                >
-                  Grocery
-                </Link>
-              </li>
 
               {/* Cart with Icon */}
               <li>
@@ -218,30 +196,6 @@ const Header = () => {
                   >
                     About
                   </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                        isActive
-                          ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-md"
-                          : "text-gray-700 hover:bg-orange-50 hover:text-orange-600"
-                      }`
-                    }
-                  >
-                    Contact
-                  </NavLink>
-                </li>
-                <li>
-                  <Link
-                    to="/grocery"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-lg font-semibold text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-all duration-300"
-                  >
-                    Grocery
-                  </Link>
                 </li>
               </ul>
             </nav>
