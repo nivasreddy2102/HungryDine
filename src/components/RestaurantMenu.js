@@ -17,9 +17,9 @@ const RestaurantMenu = () => {
 
   if (!menu) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center px-4">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-700">Menu not found!</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-gray-700">Menu not found!</h2>
         </div>
       </div>
     );
@@ -35,18 +35,18 @@ const RestaurantMenu = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 py-4 md:py-8 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
         {/* Restaurant Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
-          <h1 className="text-4xl font-bold text-gray-800 text-center mb-2">
+        <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 mb-4 md:mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 text-center mb-2">
             {menu.restaurant}
           </h1>
-          <div className="h-1 w-24 bg-gradient-to-r from-orange-400 to-red-500 mx-auto rounded-full"></div>
+          <div className="h-1 w-16 sm:w-24 bg-gradient-to-r from-orange-400 to-red-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Menu Categories */}
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {Object.entries(menu.categories).map(([category, items]) => {
             if (items.length === 0) return null;
 
@@ -55,24 +55,24 @@ const RestaurantMenu = () => {
             return (
               <div
                 key={category}
-                className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+                className="bg-white rounded-lg md:rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
               >
                 {/* Accordion Header */}
                 <div
-                  className="cursor-pointer p-5 flex items-center justify-between bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 transition-colors duration-200"
+                  className="cursor-pointer p-3 sm:p-4 md:p-5 flex items-center justify-between bg-gradient-to-r from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 transition-colors duration-200"
                   onClick={() => toggleCategory(category)}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-8 bg-gradient-to-b from-orange-400 to-red-500 rounded-full"></div>
-                    <h3 className="text-xl font-semibold text-gray-800">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-gradient-to-b from-orange-400 to-red-500 rounded-full"></div>
+                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
                       {category.replace(/([A-Z])/g, " $1").trim()}
                     </h3>
-                    <span className="bg-orange-100 text-orange-700 text-sm font-medium px-3 py-1 rounded-full">
-                      {items.length} items
+                    <span className="bg-orange-100 text-orange-700 text-xs sm:text-sm font-medium px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
+                      {items.length}
                     </span>
                   </div>
                   <span
-                    className="text-orange-500 text-xl font-bold transition-transform duration-300"
+                    className="text-orange-500 text-lg sm:text-xl font-bold transition-transform duration-300"
                     style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                   >
                     ▼
@@ -81,30 +81,30 @@ const RestaurantMenu = () => {
 
                 {/* Accordion Body */}
                 {isOpen && (
-                  <div className="p-6 bg-white">
-                    <ul className="space-y-3">
+                  <div className="p-3 sm:p-4 md:p-6 bg-white">
+                    <ul className="space-y-2 sm:space-y-3">
                       {items.map((item) => (
                         <li
                           key={item.id}
-                          className="relative flex items-center justify-between p-4 rounded-lg bg-gray-50 hover:bg-orange-50 transition-colors duration-200 border border-gray-100"
+                          className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 rounded-lg bg-gray-50 hover:bg-orange-50 transition-colors duration-200 border border-gray-100"
                         >
-                          <div className="flex items-center gap-3 flex-1">
-                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <div>
-                              <span className="text-gray-700 font-medium block">
+                          <div className="flex items-start sm:items-center gap-2 sm:gap-3 flex-1 mb-12 sm:mb-0">
+                            <div className="w-2 h-2 bg-orange-400 rounded-full mt-1.5 sm:mt-0 flex-shrink-0"></div>
+                            <div className="flex-1 min-w-0">
+                              <span className="text-gray-700 font-medium block text-sm sm:text-base break-words">
                                 {item.name}
                               </span>
-                              <span className="text-orange-600 font-bold text-lg mt-1 block">
+                              <span className="text-orange-600 font-bold text-base sm:text-lg mt-0.5 sm:mt-1 block">
                                 ₹{item.price}
                               </span>
                             </div>
                           </div>
 
-                          {/* Floating Counter */}
-                          <div className="absolute bottom-3 right-3">
+                          {/* Floating Counter - Responsive positioning */}
+                          <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 sm:relative sm:bottom-auto sm:right-auto">
                             <div className="flex items-center bg-white rounded-lg shadow-lg border border-gray-200">
                               <button
-                                className="w-8 h-8 flex items-center justify-center text-green-600 hover:bg-gray-50 font-bold text-lg"
+                                className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-green-600 hover:bg-gray-50 font-bold text-base sm:text-lg active:scale-95 transition-transform"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleRemoveItem(item);
@@ -114,12 +114,12 @@ const RestaurantMenu = () => {
                                 −
                               </button>
 
-                              <div className="w-8 h-8 flex items-center justify-center text-green-600 font-bold text-base border-l border-r border-gray-200">
+                              <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-green-600 font-bold text-sm sm:text-base border-l border-r border-gray-200">
                                 {getItemCount(item.id)}
                               </div>
 
                               <button
-                                className="w-8 h-8 flex items-center justify-center text-green-600 hover:bg-gray-50 font-bold text-lg"
+                                className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-green-600 hover:bg-gray-50 font-bold text-base sm:text-lg active:scale-95 transition-transform"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleAddItem(item);
