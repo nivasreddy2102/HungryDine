@@ -12,7 +12,6 @@ import appStore from "./utils/middleStore";
 import Cart from "./components/Cart";
 import Success from "./components/Success";
 
-const Grocery=lazy(()=>import("./components/Grocery"))
 const Applayout = () => {
   const[data,setData]=useState();
   useEffect(()=>{
@@ -66,10 +65,6 @@ const approuter=createBrowserRouter([
   path:"/about",
   element:<About/>
   },
-  {
-  path:"/grocery",
-  element:<Suspense fallback={<h2>LOADING...</h2>}><Grocery/></Suspense>
-  }
 
     ]
 

@@ -22,7 +22,7 @@ class About extends React.Component{
         // console.log("parent")
         return(
             <div>
-                <h1>parent</h1>
+                {/* <h1>parent</h1> */}
                 <Userclass/>
                 {/* {console.log("inside parent")} */}
             </div>
